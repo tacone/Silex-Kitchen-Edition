@@ -7,13 +7,13 @@ layout:   doc
 What is it
 ----------
 
-This project is a sample or a bootstrap [silex](http://silex.sensiolabs.org/) application.
-You can use it for your next php application.
+This project is a sample or a bootstrap [silex](http://silex.sensiolabs.org/)
+application. You can use it for your next php application.
 
 ### HTML / CSS / Javascripts are powered by:
 
 * [HTML5 boilerplate](http://html5boilerplate.com/)
-* [Twitter Bootstrap](http://twitter.github.com/bootstrap/) with form integration. **version 2.2.2**
+* [Twitter Bootstrap](http://twitter.github.com/bootstrap/) with form integration. **version 2.3.1**
 
 ### Extensions included:
 
@@ -60,17 +60,16 @@ You can edit `resources/config/prod.php` and start hacking in `src/controllers.p
 
 ### Assets management
 
-Assets are generated for each request in debug mode.
-Letting Assetic generate assets dynamically
-in a production environment is not optimized.
-Instead, each time you deploy your app in the production
-environment, you should dump assets using `php console assetic:dump`.
+Assets are generated for each request in debug mode. Letting Assetic generate
+assets dynamically in a production environment is not optimized. Instead, each
+time you deploy your app in the production environment, you should dump assets
+using `php console assetic:dump`.
 
 Todo
 ----
 
 * SwiftMailer
-* Security
+* Web developper toolbar
 
 Tests
 -----
@@ -80,5 +79,5 @@ Tests
     composer install --dev
     phpunit
 
-If your web server do not run with the same user as your CLI,
-you may run : `chmod 777 -R resources/cache/ web/assets/`.
+If your web server do not run with the same user as your CLI, you may run :
+`chmod 777 -R resources/cache/ web/assets/`.
