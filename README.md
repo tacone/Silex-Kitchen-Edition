@@ -1,10 +1,16 @@
-Silex - Kitchen Sink Edition
-============================
+Silex Propel - Kitchen Sink Edition
+===================================
 
-This project is a sample or a bootstrap silex application.
-You can use it for your next php application.
+Yet another fork of the popular [Silex Kitchen Sink Edition](http://lyrixx.github.com/Silex-Kitchen-Edition)
 
-For more informations, see the
-[**dedicated page**](http://lyrixx.github.com/Silex-Kitchen-Edition).
+Provides Propel and a bunch of other useful things.
 
-[![Build Status](https://secure.travis-ci.org/lyrixx/Silex-Kitchen-Edition.png?branch=master)](http://travis-ci.org/lyrixx/Silex-Kitchen-Edition)
+## Installation
+
+Download it with composer and run `php composer.phar update`.
+
+On Ubuntu and similar systems you can fix the permissions of folders by running:
+
+```bash
+sudo bin/misc/fix-ubuntu-permissions
+```
