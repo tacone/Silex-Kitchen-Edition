@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX resources/cache
+setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx resources/cache 
+
+setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX resources/log
+setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx resources/log
+
+setfacl -R -m u:www-data:rwX -m u:`whoami`:rwX web/assets
+setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx web/assets
