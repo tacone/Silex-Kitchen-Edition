@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="amaid" namespace="SampleProject\Models" defaultIdMethod="native"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../vendor/propel/propel1/generator/resources/xsd/database.xsd"
+>
+    <table name="message">
+        <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+        <column name="user_id" type="integer" />
+        <column name="body" type="longvarchar" required="true" />
+        
+        <foreign-key foreignTable="user" onDelete="cascade">
+            <reference local="user_id" foreign="id" />
+        </foreign-key>
+        <behavior name="timestampable" />
+    </table>
+    
+    <table name="user">
+        <column name="id" required="true" primaryKey="true" autoIncrement="true" type="INTEGER" description="Author Id" />
+        <column name="nickname" required="true" type="VARCHAR" size="128" />
+    </table>
+    
+</database>

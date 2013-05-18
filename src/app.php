@@ -103,6 +103,9 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
 
 }
 
-$app->register(new Silex\Provider\DoctrineServiceProvider());
+$app->register(new Propel\Silex\PropelServiceProvider(), array(
+    'propel.config_file' => __DIR__ . '/../resources/generated/propel-config/propel-conf.php',
+    'propel.model_path' => __DIR__ . '/SampleProject/Models',
+));
 
 return $app;

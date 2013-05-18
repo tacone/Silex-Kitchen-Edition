@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# A simple shortcut to the propel-gen binary, saves some typing
+
+BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$BASEDIR/.."
+
+vendor/propel/propel1/generator/bin/propel-gen resources/config $@

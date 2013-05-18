@@ -3,3 +3,6 @@ resources/log/*
 vendor/
 web/assets/*
 nbproject/
+/src/SampleProject/
+/resources/generated/sql/sample-project/resources/generated/propel-config/
+/resources/generated/sql/sample-project/resources/generated/sql/sample-project/
