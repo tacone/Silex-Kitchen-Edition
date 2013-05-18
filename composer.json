@@ -13,7 +13,6 @@
     ],
     "require": {
         "php"                   : ">=5.3.3",
-        "doctrine/dbal"         : "~2.3",
         "kriswallsmith/assetic" : "~1.0.0",
         "leafo/lessphp"         : "dev-master",
         "mheap/silex-assetic"   : "dev-master@dev",
@@ -28,7 +27,9 @@
         "symfony/validator"     : "~2.2",
         "symfony/yaml"          : "~2.2",
         "twig/twig"             : "~1.10",
-        "twitter/bootstrap"     : "2.3.1"
+        "twitter/bootstrap"     : "2.3.1",
+        "propel/propel-service-provider": "0.0.*",
+        "propel/propel1": "1.6.*@dev"
     },
     "require-dev": {
         "symfony/browser-kit"   : "~2.2",
