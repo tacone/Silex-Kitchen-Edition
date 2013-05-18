@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database  namespace="SampleProject\Models" defaultIdMethod="native"
+<database namespace="SampleProject\Models" defaultIdMethod="native"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="../../vendor/propel/propel1/generator/resources/xsd/database.xsd"
+          name="sample-project" 
 >
     <table name="message">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
