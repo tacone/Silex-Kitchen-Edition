@@ -4,20 +4,22 @@
           xsi:noNamespaceSchemaLocation="../../vendor/propel/propel1/generator/resources/xsd/database.xsd"
           name="sample-project" 
 >
-    <table name="message">
+    <table name="post">
         <column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
-        <column name="user_id" type="integer" />
+        <column name="author_id" type="integer" />
+        <column name="title" type="varchar" required="true" />
         <column name="body" type="longvarchar" required="true" />
         
-        <foreign-key foreignTable="user" onDelete="cascade">
-            <reference local="user_id" foreign="id" />
+        <foreign-key foreignTable="author" onDelete="cascade">
+            <reference local="author_id" foreign="id" />
         </foreign-key>
+        
         <behavior name="timestampable" />
     </table>
     
-    <table name="user">
+    <table name="author">
         <column name="id" required="true" primaryKey="true" autoIncrement="true" type="INTEGER" description="Author Id" />
-        <column name="nickname" required="true" type="VARCHAR" size="128" />
+        <column name="name" required="true" type="VARCHAR" size="128" />
     </table>
     
 </database>

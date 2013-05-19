@@ -31,7 +31,7 @@ If you use another OS please take a look at the ```fix-ubuntu-permissions``` sou
 bin/propel main 
 ```
 
-**Third**: create the database (the default database is `test`). **Warning**: this will **erase** your current database
+**Third**: create the database (the default database is `test`). **Warning**: this will **erase** parts of your configured database.
 
 ```bash
 bin/propel insert-sql

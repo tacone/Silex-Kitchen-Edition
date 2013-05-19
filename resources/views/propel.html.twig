@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% set active = 'propel' %}
+
+{% block content %}
+
+    <h1>{{ 'Propel'|trans }}</h1>
+
+    <ul>
+        {% for post in posts %}
+            <li><strong>{{ post.getAuthor.getName }}</strong> - {{ post.getTitle }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,5 +1,8 @@
 <?php
 
+use SampleProject\Models\Author;
+use SampleProject\Models\Post;
+use SampleProject\Models\PostQuery;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +38,23 @@ $app->match('/doctrine', function() use ($app) {
         )
     );
 })->bind('doctrine');
+
+$app->match('/propel', function() use ($app) {
+    
+    if (!PostQuery::create()->count()) {
+        $post = new Post();
+        $post->setTitle('Hello world!');
+        $post->setBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+        $author = new Author();
+        $author->setName("Anonymous coward");
+        $post->setAuthor($author);
+        $post->save();
+    }
+    
+    $posts = PostQuery::create()->useAuthorQuery()->endUse()->with('Author')->find();
+    return $app['twig']->render('propel.html.twig', array('posts' => $posts));
+    
+})->bind('propel');
 
 $app->match('/form', function(Request $request) use ($app) {
 
