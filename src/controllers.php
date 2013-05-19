@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/* @var $app Silex\Application */
+
 $app->match('/', function() use ($app) {
     $app['session']->getFlashBag()->add('warning', 'Warning flash message');
     $app['session']->getFlashBag()->add('info', 'Info flash message');
@@ -29,15 +31,6 @@ $app->match('/login', function(Request $request) use ($app) {
         'error' => $app['security.last_error']($request),
     ));
 })->bind('login');
-
-$app->match('/doctrine', function() use ($app) {
-    return $app['twig']->render(
-        'doctrine.html.twig',
-        array(
-            'posts' => $app['db']->fetchAll('SELECT * FROM post')
-        )
-    );
-})->bind('doctrine');
 
 $app->match('/propel', function() use ($app) {
     
