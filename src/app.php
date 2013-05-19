@@ -103,6 +103,7 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
 
 }
 
+//did you run 'bin/propel main' and 'bin/propel insert-sql'? If not, please read README.md
 $app->register(new Propel\Silex\PropelServiceProvider(), array(
     'propel.config_file' => __DIR__ . '/../resources/generated/propel-config/propel-conf.php',
     'propel.model_path' => __DIR__ . '/',
