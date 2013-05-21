@@ -6,3 +6,4 @@ nbproject/
 /src/SampleProject/
 /resources/generated/sql/sample-project
 /resources/generated/propel-config/
+composer.lock
