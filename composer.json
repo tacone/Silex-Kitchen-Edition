@@ -27,6 +27,7 @@
         "symfony/validator"     : "~2.2",
         "symfony/yaml"          : "~2.2",
         "twig/twig"             : "~1.10",
+        "silex/web-profiler"    : "1.0.*@dev",
         "twitter/bootstrap"     : "2.3.1",
         "propel/propel-service-provider": "0.0.*",
         "propel/propel1": "1.6.*"
