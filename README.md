@@ -5,6 +5,12 @@ Yet another fork of the popular [Silex Kitchen Sink Edition](http://lyrixx.githu
 
 Provides Propel and a bunch of other useful things.
 
+## Features
+
+- PropelORM 1.6.x, preconfigured on mysql's `test` database.
+- Twitter Bootstrap + Assetic preconfigured to dump less files into CSS
+- Web Debug Toolbar, with a own made add-on to display Propel Queries just as it normally does on Symphony
+
 ## Installation
 
 ### Permissions
