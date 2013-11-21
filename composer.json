@@ -48,6 +48,9 @@
             "SKE": "src/"
         }
     },
+    "config": {
+                "preferred-install": "dist"
+    },
     "repositories": [
         {
             "type": "vcs",
