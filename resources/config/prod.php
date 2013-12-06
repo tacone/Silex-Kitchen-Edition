@@ -1,6 +1,7 @@
 <?php
 
 // Local
+date_default_timezone_set("UTC");
 $app['locale'] = 'fr';
 $app['session.default_locale'] = $app['locale'];
 $app['translator.messages'] = array(
