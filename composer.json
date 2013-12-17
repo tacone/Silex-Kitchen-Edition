@@ -13,31 +13,36 @@
     ],
     "require": {
         "php"                   : ">=5.3.3",
-        "kriswallsmith/assetic" : "~1.0.0",
-        "leafo/lessphp"         : "dev-master",
-        "mheap/silex-assetic"   : "dev-master@dev",
-        "monolog/monolog"       : "~1.0",
-        "silex/silex"           : "~1.0.0",
-        "symfony/config"        : "~2.2",
-        "symfony/console"       : "~2.2",
-        "symfony/filesystem"    : "~2.2",
-        "symfony/form"          : "~2.2",
-        "symfony/security"      : "~2.2",
-        "symfony/translation"   : "~2.2",
-        "symfony/twig-bridge"   : "~2.2",
-        "symfony/validator"     : "~2.2",
-        "symfony/yaml"          : "~2.2",
-        "twig/twig"             : "~1.10",
-        "silex/web-profiler"    : "1.0.*@dev",
-        "twitter/bootstrap"     : "2.3.1",
-        "propel/propel-service-provider": "0.0.*",
-        "propel/propel1": "1.6.*",
+        "kriswallsmith/assetic" : "~1.1",
+        "leafo/lessphp"         : "~0.4.0",
+        "mheap/silex-assetic"   : "1.*",
+        "monolog/monolog"       : "1.*",
+        "silex/silex"           : "1.*",
+        "symfony/config"        : ">=2.3,<2.5-dev",
+        "symfony/console"       : ">=2.3,<2.5-dev",
+        "symfony/form"          : ">=2.3,<2.5-dev",
+        "symfony/finder"        : ">=2.3,<2.5-dev",
+        "symfony/security"      : ">=2.3,<2.5-dev",
+        "symfony/translation"   : ">=2.3,<2.5-dev",
+        "symfony/twig-bridge"   : ">=2.3,<2.5-dev",
+        "symfony/validator"     : ">=2.3,<2.5-dev",
+        "symfony/yaml"          : ">=2.3,<2.5-dev",
+        "twig/twig"             : "1.*",
+        "twitter/bootstrap"     : "2.3.2",
+        "propel/propel-service-provider": "dev-master",
+        "propel/propel1": "dev-master"
+    },
+    "require-removed": {
+        "silex/web-profiler"    : "1.*@dev",
         "tacone/silex-propel-web-profiler": "dev-master"
     },
     "require-dev": {
-        "symfony/browser-kit"   : "~2.2",
-        "symfony/css-selector"  : "~2.2",
-        "symfony/dom-crawler"   : "~2.2"
+        "symfony/browser-kit"   : ">=2.3,<2.5-dev",
+        "symfony/css-selector"  : ">=2.3,<2.5-dev",
+        "symfony/dom-crawler"   : ">=2.3,<2.5-dev"
+    },
+    "config": {
+        "preferred-install": "dist"
     },
     "scripts": {
         "post-install-cmd": "SKE\\Composer\\Script::install",
@@ -47,14 +52,5 @@
         "psr-0": {
             "SKE": "src/"
         }
-    },
-    "config": {
-                "preferred-install": "dist"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/tacone/Silex-Propel-WebProfiler"
-        }
-    ]
+    }
 }

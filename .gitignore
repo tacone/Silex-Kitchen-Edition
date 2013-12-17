@@ -1,7 +1,8 @@
-resources/cache/*
-resources/log/*
-vendor/
-web/assets/*
+/composer.lock
+/resources/cache/*
+/resources/log/*
+/vendor/
+/web/assets/*
 nbproject/
 /src/SampleProject/
 /resources/generated/sql/sample-project
