@@ -121,11 +121,12 @@ $app->match('/form', function(Request $request) use ($app) {
             'first_options'   => array('label' => 'Password'),
             'second_options'  => array('label' => 'Repeat Password'),
         ))
+        ->add('submit', 'submit')
         ->getForm()
     ;
 
-    if ($request->isMethod('POST')) {
-        $form->bind($request);
+    $form->handleRequest($request);
+    if ($form->isSubmitted()) {
         if ($form->isValid()) {
             $app['session']->getFlashBag()->add('success', 'The form is valid');
         } else {

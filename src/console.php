@@ -37,11 +37,12 @@ if (isset($app['cache.path'])) {
             $cacheDir = $app['cache.path'];
             $finder = Finder::create()->in($cacheDir)->notName('.gitkeep');
 
-            $filesystem = new Filesystem;
+            $filesystem = new Filesystem();
             $filesystem->remove($finder);
 
             $output->writeln(sprintf("%s <info>success</info>", 'cache:clear'));
     });
 }
+
 
 return $console;
