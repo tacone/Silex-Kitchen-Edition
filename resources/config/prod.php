@@ -21,6 +21,8 @@ $app['twig.options.cache'] = $app['cache.path'] . '/twig';
 $app['assetic.enabled']              = true;
 $app['assetic.path_to_cache']        = $app['cache.path'] . '/assetic' ;
 $app['assetic.path_to_web']          = __DIR__ . '/../../web/assets';
+$app['assetic.path_to_node']       = trim(`which nodejs`, "\n");
+$app['assetic.node_paths']       = explode(PATH_SEPARATOR,'/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript');
 $app['assetic.input.path_to_assets'] = __DIR__ . '/../assets';
 
 $app['assetic.input.path_to_css']       = $app['assetic.input.path_to_assets'] . '/less/style.less';

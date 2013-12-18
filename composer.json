@@ -14,7 +14,6 @@
     "require": {
         "php"                   : ">=5.3.3",
         "kriswallsmith/assetic" : "~1.1",
-        "leafo/lessphp"         : "~0.4.0",
         "mheap/silex-assetic"   : "1.*",
         "monolog/monolog"       : "1.*",
         "silex/silex"           : "1.*",
@@ -28,11 +27,12 @@
         "symfony/validator"     : ">=2.3,<2.5-dev",
         "symfony/yaml"          : ">=2.3,<2.5-dev",
         "twig/twig"             : "1.*",
-        "twitter/bootstrap"     : "2.3.2",
+        "twitter/bootstrap"     : "3.*",
         "propel/propel-service-provider": "dev-master",
         "propel/propel1": "dev-master"
     },
     "require-removed": {
+        "leafo/lessphp"         : "dev-master",
         "silex/web-profiler"    : "1.*@dev",
         "tacone/silex-propel-web-profiler": "dev-master"
     },

@@ -58,9 +58,9 @@
         <div {{ block('widget_container_attributes') }}>
         {% endif %}
             {{ date_pattern|replace({
-                '{{ year }}':  form_widget(form.year, {attr: { class : 'span1'} }),
-                '{{ month }}': form_widget(form.month, {attr: { class : 'span1'} }),
-                '{{ day }}':   form_widget(form.day, {attr: { class : 'span1' } }),
+                '{{ year }}':  form_widget(form.year, {attr: { class : 'col-lg-1 form-control'} }),
+                '{{ month }}': form_widget(form.month, {attr: { class : 'col-lg-1 form-control'} }),
+                '{{ day }}':   form_widget(form.day, {attr: { class : 'col-lg-1 form-control' } }),
             })|raw }}
         {% if datetime is not defined or false == datetime %}
         </div>
@@ -77,7 +77,7 @@
         {% if datetime is not defined or false == datetime %}
         <div {{ block('widget_container_attributes') }}>
         {% endif %}
-            {{ form_widget(form.hour, { attr: { class : 'span1' } }) }}:{{ form_widget(form.minute, { attr: { class : 'span1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { attr: { class : 'span1' } }) }}{% endif %}
+            {{ form_widget(form.hour, { attr: { class : 'form-control col-lg-1' } }) }}:{{ form_widget(form.minute, { attr: { class : 'form-control col-lg-1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { attr: { class : 'span1' } }) }}{% endif %}
         {% if datetime is not defined or false == datetime %}
         </div>
         {% endif %}
@@ -89,15 +89,16 @@
 {% block money_widget %}
 {% spaceless %}
     {% set append = '{{' == money_pattern[0:2] %}
-    <div class="{{ append ? 'input-append' : 'input-prepend' }}">
+{#    <div class="{{ append ? 'input-append' : 'input-prepend' }}">#}
+    <div class="input-group">
         {% if not append %}
-            <span class="add-on">
+            <span class="input-group-addon">
                 {{ money_pattern|replace({ '{{ widget }}':''}) }}
             </span>
         {% endif %}
         {{ block('form_widget_simple') }}
         {% if append %}
-            <span class="add-on">
+            <span class="input-group-addon">
                 {{ money_pattern|replace({ '{{ widget }}':''}) }}
             </span>
         {% endif %}
@@ -108,9 +109,12 @@
 
 {% block percent_widget %}
 {% spaceless %}
-    <div class="input-append">
-        {{ parent() }}
-        <span class="add-on">%</span>
+    <div class="input-group">
+        {% spaceless %}
+            {% set type = type|default('text') %}
+            {{ block('form_widget_simple') }}
+        {% endspaceless %}
+        <span class="input-group-addon">%</span>
     </div>
 {% endspaceless %}
 {% endblock percent_widget %}
@@ -142,7 +146,7 @@
             </span>
         </label>
     {% else %}
-        {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' control-label')|trim}) %}
+        {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ 'col-sm-2 control-label')|trim}) %}
         {{ parent() }}
     {% endif %}
 {% endspaceless %}
@@ -152,10 +156,11 @@
 
 {% block form_row %}
 {% spaceless %}
-    <div class="control-group{% if not compound and not form.vars.valid %} error{% endif %}">
+    <div class="form-group{% if not compound and not form.vars.valid %} has-error text-danger{% endif %}">
         {{ form_label(form, label|default(null)) }}
-        <div class="controls">
-            {{ form_widget(form) }}
+        {% set type = type|default('text') %}
+        <div class="col-sm-10">
+            {{ form_widget(form, { attr: { class : compound or type=='file' ? '': 'form-control' } }) }}
             {{ form_errors(form) }}
         </div>
     </div>
@@ -165,7 +170,7 @@
 {% block form_errors %}
 {% spaceless %}
     {% if errors|length > 0 %}
-    {% if form.parent %}<span class="help-inline">{% else %}<div class="alert alert-error error" >{% endif %}
+    {% if form.parent %}<span class="help-inline">{% else %}<div class="alert alert-danger error" >{% endif %}
         {{ parent() }}
     {% if form.parent %}</span>{% else %}</div>{% endif %}
     {% endif %}
@@ -177,3 +182,22 @@
         {{ form_widget(form) }}
     </div>
 {% endblock %}
+
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} class="form-control">
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('choice_widget_options') }}
+            {% if choices|length > 0 and separator is not none %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('choice_widget_options') }}
+    </select>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
