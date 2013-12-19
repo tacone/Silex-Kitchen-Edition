@@ -58,9 +58,9 @@
         <div {{ block('widget_container_attributes') }}>
         {% endif %}
             {{ date_pattern|replace({
-                '{{ year }}':  form_widget(form.year, {attr: { class : 'col-lg-1 form-control'} }),
-                '{{ month }}': form_widget(form.month, {attr: { class : 'col-lg-1 form-control'} }),
-                '{{ day }}':   form_widget(form.day, {attr: { class : 'col-lg-1 form-control' } }),
+                '{{ year }}':  form_widget(form.year, {attr: { class : 'form-control'} }),
+                '{{ month }}': form_widget(form.month, {attr: { class : 'form-control'} }),
+                '{{ day }}':   form_widget(form.day, {attr: { class : 'form-control' } }),
             })|raw }}
         {% if datetime is not defined or false == datetime %}
         </div>
@@ -77,7 +77,7 @@
         {% if datetime is not defined or false == datetime %}
         <div {{ block('widget_container_attributes') }}>
         {% endif %}
-            {{ form_widget(form.hour, { attr: { class : 'form-control col-lg-1' } }) }}:{{ form_widget(form.minute, { attr: { class : 'form-control col-lg-1' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { attr: { class : 'span1' } }) }}{% endif %}
+            {{ form_widget(form.hour, { attr: { class : 'form-control' } }) }}:{{ form_widget(form.minute, { attr: { class : 'form-control' } }) }}{% if with_seconds %}:{{ form_widget(form.second, { attr: { class : 'span1' } }) }}{% endif %}
         {% if datetime is not defined or false == datetime %}
         </div>
         {% endif %}
