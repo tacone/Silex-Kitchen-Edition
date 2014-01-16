@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ 'Graffiti'|trans }}</title>
+    <title>{{ app.name|trans }}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ app.request.basepath }}/assets/css/styles.css">
@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ path('homepage') }}">{{ 'Graffiti'|trans }}</a>
+          <a class="navbar-brand" href="{{ path('homepage') }}">{{ app.name|trans }}</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

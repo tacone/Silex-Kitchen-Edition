@@ -1,5 +1,8 @@
 <?php
 
+$app['name'] = 'My app';
+$app['version'] = '0.1';
+
 // Local
 date_default_timezone_set("UTC");
 $app['locale'] = 'en';
