@@ -1,0 +1,24 @@
+{
+  "name": "private package",
+  "version": "0.1",
+  "homepage": "example.com",
+  "authors": [
+    "none@example.com"
+  ],
+  "description": "web relevance utilities",
+  "license": "Proprietary",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1",
+    "bootstrap": "~3",
+    "knockout": "http://knockoutjs.com/downloads/knockout-3.0.0.js",
+    "jquery-autosize": ""
+  }
+}

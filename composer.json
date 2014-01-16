@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "php"                   : ">=5.3.3",
+        "php"                   : ">=5.4",
         "kriswallsmith/assetic" : "~1.1",
         "mheap/silex-assetic"   : "1.*",
         "monolog/monolog"       : "1.*",
@@ -29,7 +29,9 @@
         "twig/twig"             : "1.*",
         "twitter/bootstrap"     : "3.*",
         "propel/propel-service-provider": "dev-master",
-        "propel/propel1": "dev-master"
+        "propel/propel1": "dev-master",
+        "filp/whoops": "1.*",
+        "packagist/yuicompressor-bin": "dev-master"
     },
     "require-removed": {
         "leafo/lessphp"         : "dev-master",

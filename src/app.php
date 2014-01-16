@@ -1,20 +1,29 @@
 <?php
 
+use Assetic\Asset\AssetCache;
+use Assetic\Asset\GlobAsset;
+use Assetic\Cache\FilesystemCache;
+use Assetic\Filter\LessFilter;
+use Assetic\Filter\Yui\CssCompressorFilter;
+use Assetic\Filter\Yui\JsCompressorFilter;
+use Propel\Silex\PropelServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpCacheServiceProvider;
 use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\SecurityServiceProvider;
-use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\UrlGeneratorServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
-use Silex\Provider\WebProfilerServiceProvider;
 use SilexAssetic\AsseticServiceProvider;
 use Symfony\Component\Security\Core\Encoder\PlaintextPasswordEncoder;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
-use tacone\Silex\PropelWebProfiler\PropelWebProfilerServiceProvider;
+use Whoops\Provider\Silex\WhoopsServiceProvider;
+
+if ($app['debug']) {
+    $app->register(new WhoopsServiceProvider);
+}
 
 $app->register(new HttpCacheServiceProvider());
 
@@ -68,7 +77,7 @@ $app->register(new TwigServiceProvider(), array(
 ));
 
 //did you run 'bin/propel main' and 'bin/propel insert-sql'? If not, please read README.md
-$app->register(new Propel\Silex\PropelServiceProvider(), array(
+$app->register(new PropelServiceProvider(), array(
     'propel.config_file' => __DIR__ . '/../resources/generated/propel-config/propel-conf.php',
     'propel.model_path' => __DIR__ . '/',
 ));
@@ -89,29 +98,36 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
             'auto_dump_assets' => $app['debug'],
         )
     ));
-
+//    var_dump ( $app['assetic.path_to_yui_compressor']  ); die;
     $app['assetic.filter_manager'] = $app->share(
         $app->extend('assetic.filter_manager', function($fm, $app) {
-            $fm->set('less', new Assetic\Filter\LessFilter($app['assetic.path_to_node'], $app['assetic.node_paths']));
-
+            $fm->set('less', new LessFilter($app['assetic.path_to_node'], $app['assetic.node_paths']));
+            $fm->set('yui_css', new CssCompressorFilter(
+                $app['assetic.path_to_yui_compressor']
+            ));
+            $fm->set('yui_js', new JsCompressorFilter(
+                $app['assetic.path_to_yui_compressor']
+            ));
             return $fm;
         })
     );
         
-    $app['assetic.asset_manager'] = $app->share(
+   $app['assetic.asset_manager'] = $app->share(
         $app->extend('assetic.asset_manager', function($am, $app) {
-            $am->set('styles', new Assetic\Asset\AssetCache(
-                new Assetic\Asset\GlobAsset(
-                    $app['assetic.input.path_to_css'],
-                    array($app['assetic.filter_manager']->get('less'))
-                ),
-                new Assetic\Cache\FilesystemCache($app['assetic.path_to_cache'])
-            ));
-            $am->get('styles')->setTargetPath($app['assetic.output.path_to_css']);
+            $jsFilters = $app['debug'] ? array() : [$app['assetic.filter_manager']->get('yui_js')];
+            $cssFilters = [$app['assetic.filter_manager']->get('less')];
+            if (!$app['debug']) $cssFilters[] = $app['assetic.filter_manager']->get('yui_css');
 
-            $am->set('scripts', new Assetic\Asset\AssetCache(
-                new Assetic\Asset\GlobAsset($app['assetic.input.path_to_js']),
-                new Assetic\Cache\FilesystemCache($app['assetic.path_to_cache'])
+            // --- website
+            $am->set('styles', new AssetCache(
+                new GlobAsset(
+                $app['assetic.input.path_to_css'], $cssFilters
+                ), new FilesystemCache($app['assetic.path_to_cache'])
+            ));
+            $am->get('styles')->setTargetPath('css/styles.css');
+            // --- javascript
+            $scripts = $am->set('scripts', new AssetCache(
+                new GlobAsset($app['assetic.input.path_to_js'], $jsFilters), new FilesystemCache($app['assetic.path_to_cache'])
             ));
             $am->get('scripts')->setTargetPath($app['assetic.output.path_to_js']);
 

@@ -8,3 +8,4 @@ nbproject/
 /resources/generated/sql/sample-project
 /resources/generated/propel-config/
 composer.lock
+bower_components
