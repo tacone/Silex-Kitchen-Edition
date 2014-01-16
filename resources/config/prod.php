@@ -27,7 +27,8 @@ $app['assetic.path_to_cache']        = $app['cache.path'] . '/assetic' ;
 $app['assetic.path_to_web']          = __DIR__ . '/../../web/assets';
 $app['assetic.path_to_node']       = trim(`which nodejs`, "\n");
 $app['assetic.node_paths']       = explode(PATH_SEPARATOR,'/usr/lib/nodejs:/usr/lib/node_modules:/usr/share/javascript');
-$app['assetic.path_to_yui_compressor']       = $app['vendor.path'].'/bin/yuicompressor.jar';
+//$app['assetic.path_to_yui_compressor']       = $app['vendor.path'].'/bin/yuicompressor.jar';
+$app['assetic.path_to_uglifyjs']       = $app['bower.basepath'].'/uglify-js/bin/uglifyjs';
 
 $app['assetic.input.path_to_assets'] = __DIR__ . '/../assets';
 

@@ -30,8 +30,7 @@
         "twitter/bootstrap"     : "3.*",
         "propel/propel-service-provider": "dev-master",
         "propel/propel1": "dev-master",
-        "filp/whoops": "1.*",
-        "packagist/yuicompressor-bin": "dev-master"
+        "filp/whoops": "1.*"
     },
     "require-removed": {
         "leafo/lessphp"         : "dev-master",

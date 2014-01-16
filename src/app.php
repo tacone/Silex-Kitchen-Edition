@@ -4,8 +4,7 @@ use Assetic\Asset\AssetCache;
 use Assetic\Asset\GlobAsset;
 use Assetic\Cache\FilesystemCache;
 use Assetic\Filter\LessFilter;
-use Assetic\Filter\Yui\CssCompressorFilter;
-use Assetic\Filter\Yui\JsCompressorFilter;
+use Assetic\Filter\UglifyJs2Filter;
 use Propel\Silex\PropelServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpCacheServiceProvider;
@@ -102,11 +101,11 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
     $app['assetic.filter_manager'] = $app->share(
         $app->extend('assetic.filter_manager', function($fm, $app) {
             $fm->set('less', new LessFilter($app['assetic.path_to_node'], $app['assetic.node_paths']));
-            $fm->set('yui_css', new CssCompressorFilter(
-                $app['assetic.path_to_yui_compressor']
-            ));
-            $fm->set('yui_js', new JsCompressorFilter(
-                $app['assetic.path_to_yui_compressor']
+//            $fm->set('yui_css', new CssCompressorFilter(
+//                $app['assetic.path_to_yui_compressor']
+//            ));
+            $fm->set('compress_js', new UglifyJs2Filter(
+                $app['assetic.path_to_uglifyjs']
             ));
             return $fm;
         })
@@ -114,9 +113,9 @@ if (isset($app['assetic.enabled']) && $app['assetic.enabled']) {
         
    $app['assetic.asset_manager'] = $app->share(
         $app->extend('assetic.asset_manager', function($am, $app) {
-            $jsFilters = $app['debug'] ? array() : [$app['assetic.filter_manager']->get('yui_js')];
+            $jsFilters = $app['debug'] ? array() : [$app['assetic.filter_manager']->get('compress_js')];
             $cssFilters = [$app['assetic.filter_manager']->get('less')];
-            if (!$app['debug']) $cssFilters[] = $app['assetic.filter_manager']->get('yui_css');
+//            if (!$app['debug']) $cssFilters[] = $app['assetic.filter_manager']->get('yui_css');
 
             // --- website
             $am->set('styles', new AssetCache(

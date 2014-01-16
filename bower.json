@@ -19,6 +19,8 @@
     "jquery": "~1",
     "bootstrap": "~3",
     "knockout": "http://knockoutjs.com/downloads/knockout-3.0.0.js",
-    "jquery-autosize": ""
+    "jquery-autosize": "",
+    "uglify-js": "",
+    "uglify-css": ""
   }
 }
