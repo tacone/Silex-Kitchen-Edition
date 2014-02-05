@@ -27,7 +27,6 @@
         "symfony/validator"     : ">=2.3,<2.5-dev",
         "symfony/yaml"          : ">=2.3,<2.5-dev",
         "twig/twig"             : "1.*",
-        "twitter/bootstrap"     : "3.*",
         "propel/propel-service-provider": "dev-master",
         "propel/propel1": "dev-master",
         "filp/whoops": "1.*"
